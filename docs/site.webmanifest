@@ -1,7 +1,7 @@
 {
-  "name": "先问AI",
+  "name": "先问AI-创建AI分身",
   "short_name": "先问AI",
-  "description": "智能AI对话助手，提供24小时智能服务",
+  "description": "创建AI分身，时刻为你赚钱，提供24小时智能服务",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#111827",
@@ -40,9 +40,9 @@
   ],
   "shortcuts": [
     {
-      "name": "开始新对话",
-      "short_name": "新对话",
-      "description": "开始一个新的AI对话",
+      "name": "创建AI分身",
+      "short_name": "创建",
+      "description": "开始创建你的赚钱AI分身",
       "url": "?new=true",
       "icons": [
         {
