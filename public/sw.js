@@ -5,9 +5,13 @@ const urlsToCache = [
   '/css/styles.css',
   '/js/main.js',
   '/favicon.ico',
-  '/public/manifest.json',
-  '/public/icons/icon-192x192.png',
-  '/public/icons/icon-512x512.png'
+  '/favicon-16x16.png',
+  '/favicon-32x32.png',
+  '/apple-touch-icon.png',
+  '/icon-192x192.png',
+  '/icon-512x512.png',
+  '/site.webmanifest',
+  '/public/offline.html'
 ];
 
 self.addEventListener('install', event => {
