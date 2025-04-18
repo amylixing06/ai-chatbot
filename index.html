@@ -6,6 +6,14 @@
     <title>AI 助手 - 智能对话服务</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" href="favicon.ico">
+    <!-- PWA相关标签 -->
+    <link rel="manifest" href="public/manifest.json">
+    <meta name="theme-color" content="#10b981">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="AI助手">
+    <link rel="apple-touch-icon" href="public/icons/icon-192x192.png">
+    <meta name="description" content="智能AI对话助手，提供24小时智能服务">
 </head>
 <body>
     <header>
@@ -361,5 +369,7 @@
     </footer>
     
     <script src="js/main.js"></script>
+    <!-- 注册service worker -->
+    <script src="public/register-sw.js"></script>
 </body>
 </html>
