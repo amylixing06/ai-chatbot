@@ -11,14 +11,16 @@
 ├── js/
 │   └── main.js            # JavaScript交互逻辑
 ├── images/                # 图片文件夹
-├── public/                # PWA相关文件
-│   ├── icons/             # PWA图标（需要自行添加不同尺寸的图标）
-│   ├── screenshots/       # 应用截图（可选）
-│   ├── manifest.json      # PWA配置文件
-│   ├── sw.js              # Service Worker脚本
-│   ├── register-sw.js     # Service Worker注册脚本
+├── public/                # 其他资源文件
 │   └── offline.html       # 离线页面
 ├── favicon.ico            # 网站图标
+├── favicon-16x16.png      # 16x16像素图标
+├── favicon-32x32.png      # 32x32像素图标
+├── apple-touch-icon.png   # 苹果设备图标
+├── icon-192x192.png       # PWA 192像素图标 
+├── icon-512x512.png       # PWA 512像素图标
+├── site.webmanifest       # PWA配置文件
+├── sw.js                  # Service Worker脚本
 ├── index.html             # 主页面
 ├── .gitignore
 └── README.md
@@ -56,20 +58,16 @@ npx serve
 
 ## PWA功能
 
-### 准备PWA图标
+### 图标文件
 
-为了完整支持PWA功能，您需要准备以下尺寸的图标，并放置在`public/icons/`目录下：
+PWA需要以下图标文件：
 
-- icon-72x72.png
-- icon-96x96.png
-- icon-128x128.png
-- icon-144x144.png
-- icon-152x152.png
-- icon-192x192.png
-- icon-384x384.png
-- icon-512x512.png
-
-图标应该使用PNG格式，背景透明。
+- favicon.ico - 网站图标
+- favicon-16x16.png - 16x16像素图标
+- favicon-32x32.png - 32x32像素图标
+- apple-touch-icon.png - 180x180像素，用于苹果设备
+- icon-192x192.png - 192x192像素，用于安装到主屏幕
+- icon-512x512.png - 512x512像素，高分辨率设备使用
 
 ### 测试PWA功能
 
