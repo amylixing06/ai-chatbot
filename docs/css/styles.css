@@ -572,17 +572,25 @@ nav {
     color: #9ca3af;
 }
 
-/* 底部样式 */
+/* 页脚 */
 footer {
-    background-color: var(--darker);
     padding: 40px 0;
+    margin-top: 60px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+}
+
+.footer-simple {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .social-links {
@@ -591,17 +599,32 @@ footer {
 }
 
 .social-link {
-    color: #9ca3af;
+    color: var(--white);
 }
 
 .social-link:hover {
-    color: var(--white);
+    color: var(--green);
 }
 
 .copyright {
     color: #9ca3af;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     text-align: center;
+}
+
+.email-link {
+    color: var(--green);
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.email-link:hover {
+    text-decoration: underline;
+}
+
+.contact-simple {
+    display: flex;
+    align-items: center;
 }
 
 /* 媒体查询 */
