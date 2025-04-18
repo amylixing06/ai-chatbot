@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>先问AI界面预览</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #111827;
+            font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+        }
+        .container {
+            width: 800px;
+            height: 450px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            color: white;
+            display: flex;
+            background-color: #1f2937;
+        }
+        .sidebar {
+            width: 240px;
+            background-color: #111827;
+            padding: 20px;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: #1f2937;
+        }
+        .sidebar-header {
+            margin-bottom: 30px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 5px;
+        }
+        .logo-icon {
+            width: 8px;
+            height: 8px;
+            background-color: #10b981;
+            border-radius: 50%;
+            margin-right: 8px;
+            display: inline-block;
+        }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            margin-bottom: 5px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #9ca3af;
+        }
+        .nav-item.active {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+        }
+        .nav-item-icon {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            opacity: 0.7;
+        }
+        .chat-header {
+            padding: 16px 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .chat-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .chat-actions {
+            display: flex;
+        }
+        .action-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .chat-messages {
+            flex: 1;
+            padding: 20px 24px;
+            overflow-y: auto;
+        }
+        .message {
+            margin-bottom: 24px;
+            max-width: 80%;
+        }
+        .message.user {
+            margin-left: auto;
+        }
+        .message-content {
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .message.bot .message-content {
+            background-color: #2d3748;
+            border-top-left-radius: 2px;
+        }
+        .message.user .message-content {
+            background-color: #10b981;
+            color: white;
+            border-top-right-radius: 2px;
+        }
+        .message-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 13px;
+        }
+        .message-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin-right: 8px;
+            background-color: #10b981;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .message.user .message-avatar {
+            background-color: #6366f1;
+        }
+        .message-sender {
+            font-weight: 500;
+        }
+        .chat-input {
+            padding: 16px 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .input-container {
+            display: flex;
+            background-color: #2d3748;
+            border-radius: 8px;
+            padding: 10px 16px;
+        }
+        .input-field {
+            flex: 1;
+            background: none;
+            border: none;
+            outline: none;
+            color: white;
+            font-size: 14px;
+        }
+        .send-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #10b981;
+            cursor: pointer;
+        }
+        .create-ai {
+            margin-top: auto;
+            padding: 12px 16px;
+            border-radius: 6px;
+            background-color: #10b981;
+            color: white;
+            text-align: center;
+            font-weight: 500;
+            margin-top: 20px;
+        }
+        .ai-avatar-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px 0 30px;
+        }
+        .ai-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #6366f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 10px;
+        }
+        .ai-name {
+            font-size: 16px;
+            font-weight: 500;
+            text-align: center;
+        }
+        .ai-desc {
+            font-size: 12px;
+            color: #9ca3af;
+            text-align: center;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon"></span>
+                    先问AI
+                </div>
+            </div>
+            
+            <div class="ai-avatar-container">
+                <div class="ai-avatar">AI</div>
+                <div class="ai-name">理财专家</div>
+                <div class="ai-desc">个人理财咨询</div>
+            </div>
+            
+            <div class="nav-item active">
+                <span class="nav-item-icon">💬</span>
+                聊天
+            </div>
+            <div class="nav-item">
+                <span class="nav-item-icon">📊</span>
+                数据分析
+            </div>
+            <div class="nav-item">
+                <span class="nav-item-icon">💰</span>
+                收入统计
+            </div>
+            <div class="nav-item">
+                <span class="nav-item-icon">⚙️</span>
+                设置
+            </div>
+            
+            <div class="create-ai">
+                创建新的AI分身
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="chat-header">
+                <div class="chat-title">理财咨询</div>
+                <div class="chat-actions">
+                    <div class="action-btn">💾</div>
+                    <div class="action-btn">⚙️</div>
+                </div>
+            </div>
+            
+            <div class="chat-messages">
+                <div class="message bot">
+                    <div class="message-info">
+                        <div class="message-avatar">AI</div>
+                        <div class="message-sender">理财专家</div>
+                    </div>
+                    <div class="message-content">
+                        您好！我是您的AI理财顾问。我可以帮您制定个人理财计划、分析投资机会、提供理财建议。请问您有什么理财问题需要咨询吗？
+                    </div>
+                </div>
+                
+                <div class="message user">
+                    <div class="message-info">
+                        <div class="message-avatar">U</div>
+                        <div class="message-sender">用户</div>
+                    </div>
+                    <div class="message-content">
+                        我想了解一下如何开始投资基金，有什么推荐的入门方式吗？
+                    </div>
+                </div>
+                
+                <div class="message bot">
+                    <div class="message-info">
+                        <div class="message-avatar">AI</div>
+                        <div class="message-sender">理财专家</div>
+                    </div>
+                    <div class="message-content">
+                        投资基金是很好的理财入门方式。作为初学者，我建议您：<br><br>
+                        1. 先了解基金类型：指数基金风险较低，适合新手<br>
+                        2. 采用定投策略：每月固定投入一定金额<br>
+                        3. 分散投资：不要把所有资金投入单一基金<br>
+                        4. 长期持有：基金投资适合长期规划<br><br>
+                        
+                        您目前有投资经验吗？或者有特定的理财目标？
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chat-input">
+                <div class="input-container">
+                    <input type="text" class="input-field" placeholder="输入您的问题...">
+                    <div class="send-btn">➤</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+    // 截图辅助脚本
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('请对该页面截图，保存为png格式，用作先问AI界面预览图');
+    });
+    </script>
+</body>
+</html> 
