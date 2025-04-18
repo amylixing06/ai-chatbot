@@ -5,32 +5,29 @@ on:
     branches: [main]
 
 permissions:
-  contents: read
+  contents: write  # 更改为write以允许直接推送到仓库
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: 检出代码
         uses: actions/checkout@v3
       
-      - name: 设置Pages
-        uses: actions/configure-pages@v3
+      # 直接部署，无需上传下载步骤
+      - name: 配置Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
       
-      - name: 上传构建文件
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: './docs'
-      
-      - name: 部署到GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2 
+      - name: 直接部署到GitHub Pages
+        run: |
+          # 如果需要构建，在这里添加构建步骤
+          
+          # 将所有文件添加到gh-pages分支
+          git checkout -b gh-pages
+          git add .
+          git commit -m "直接部署到GitHub Pages"
+          git push -f origin gh-pages 
