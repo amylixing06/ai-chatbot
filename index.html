@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>先问AI-创建AI分身，时刻为你赚钱</title>
-    <link rel="stylesheet" href="docs/css/styles.css">
+    <link rel="stylesheet" href="./docs/css/styles.css">
     <!-- 图标支持 -->
-    <link rel="apple-touch-icon" sizes="180x180" href="docs/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="docs/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="docs/icons/favicon-16x16.png">
-    <link rel="icon" href="docs/icons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="./docs/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./docs/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./docs/icons/favicon-16x16.png">
+    <link rel="icon" href="./docs/icons/favicon.ico">
     <!-- PWA相关标签 -->
-    <link rel="manifest" href="docs/site.webmanifest">
+    <link rel="manifest" href="./docs/site.webmanifest">
     <meta name="theme-color" content="#10b981">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -42,7 +42,7 @@
             <button class="btn btn-green">免费试用</button>
             
             <div class="showcase">
-                <img src="https://via.placeholder.com/800x450/10b981/FFFFFF?text=%E5%85%88%E9%97%AEAI%E7%95%8C%E9%9D%A2%E9%A2%84%E8%A7%88" alt="先问AI界面预览">
+                <img src="./docs/images/interface/preview.png" alt="先问AI界面预览">
                 
                 <div class="showcase-controls">
                     <div>◀</div>
@@ -113,7 +113,7 @@
             
             <div class="stats-showcase">
                 <div class="stats-image">
-                    <img src="docs/images/ai-data-analytics.png" alt="先问AI数据分析">
+                    <img src="./docs/images/ai-data-analytics.png" alt="先问AI数据分析">
                 </div>
                 
                 <div class="stats-info">
@@ -154,7 +154,7 @@
             
             <div class="metrics-chart">
                 <div class="chart-image">
-                    <img src="docs/images/ai-growth-chart.png" alt="AI增长图表">
+                    <img src="./docs/images/ai-growth-chart.png" alt="AI增长图表">
                 </div>
                 
                 <div class="metrics-info">
@@ -328,57 +328,28 @@
         </div>
     </section>
     
-    <section class="contact-form" id="contact">
-        <div class="container">
-            <div class="form-card">
-                <div class="form-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                        <polyline points="22,6 12,13 2,6"></polyline>
-                    </svg>
-                </div>
-                <h3>想了解如何让你的AI分身赚更多?</h3>
-                <p>订阅我们获取最新的AI变现技巧和成功案例</p>
-                <form>
-                    <input type="email" placeholder="输入你的邮箱地址" required>
-                    <button type="submit" class="btn btn-green">订阅我们</button>
-                </form>
-            </div>
-        </div>
-    </section>
-    
     <footer>
         <div class="container">
-            <div class="footer-top">
+            <div class="footer-simple">
                 <div class="logo">
                     <span class="logo-icon">●</span>
                     先问AI
                 </div>
-                <div class="social-links">
-                    <a href="#" class="social-link">知乎</a>
-                    <a href="#" class="social-link">微博</a>
+                <div class="copyright">
+                    <p>© 2023 先问AI. 保留所有权利.</p>
                 </div>
-            </div>
-            
-            <div class="copyright">
-                <p>© 2023 先问AI. 保留所有权利.</p>
+                <div class="contact-simple">
+                    <a href="mailto:amylixing@gmail.com" class="email-link">amylixing@gmail.com</a>
+                </div>
             </div>
         </div>
     </footer>
     
-    <script src="docs/js/main.js"></script>
-    <!-- 注册service worker -->
+    <script src="./docs/js/main.js"></script>
     <script>
-    // 当页面加载完成后注册Service Worker
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('docs/sw.js')
-          .then(function(registration) {
-            console.log('Service Worker 注册成功，作用域为：', registration.scope);
-          })
-          .catch(function(error) {
-            console.log('Service Worker 注册失败：', error);
-          });
+        navigator.serviceWorker.register('./docs/sw.js');
       });
     }
     </script>
