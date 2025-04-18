@@ -15,10 +15,18 @@ const urlsToCache = [
 ];
 
 self.addEventListener('install', event => {
+  console.log('Service Worker 正在安装...');
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
+        console.log('缓存打开');
         return cache.addAll(urlsToCache);
+      })
+      .then(() => {
+        console.log('资源缓存完成');
+      })
+      .catch(error => {
+        console.error('预缓存失败:', error);
       })
   );
 });
@@ -54,12 +62,14 @@ self.addEventListener('fetch', event => {
 });
 
 self.addEventListener('activate', event => {
+  console.log('Service Worker 已激活');
   const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(
         cacheNames.map(cacheName => {
           if (cacheWhitelist.indexOf(cacheName) === -1) {
+            console.log('删除旧缓存:', cacheName);
             return caches.delete(cacheName);
           }
         })
