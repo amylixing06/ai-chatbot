@@ -1,6 +1,6 @@
 {
-  "name": "AI 助手",
-  "short_name": "AI助手",
+  "name": "先问AI",
+  "short_name": "先问AI",
   "description": "智能AI对话助手，提供24小时智能服务",
   "start_url": "/",
   "display": "standalone",
