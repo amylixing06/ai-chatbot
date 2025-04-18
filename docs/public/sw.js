@@ -1,24 +1,32 @@
-const CACHE_NAME = 'ai-assistant-v1';
+const CACHE_NAME = 'xianwen-ai-v1';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/css/styles.css',
-  '/js/main.js',
-  '/favicon.ico',
-  '/favicon-16x16.png',
-  '/favicon-32x32.png',
-  '/apple-touch-icon.png',
-  '/icon-192x192.png',
-  '/icon-512x512.png',
-  '/site.webmanifest',
-  '/public/offline.html'
+  './',
+  './index.html',
+  './css/styles.css',
+  './js/main.js',
+  './icons/favicon.ico',
+  './icons/favicon-16x16.png',
+  './icons/favicon-32x32.png',
+  './icons/apple-touch-icon.png',
+  './icons/android-chrome-192x192.png',
+  './icons/android-chrome-512x512.png',
+  './site.webmanifest',
+  './offline.html'
 ];
 
 self.addEventListener('install', event => {
+  console.log('Service Worker 正在安装...');
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
+        console.log('缓存打开');
         return cache.addAll(urlsToCache);
+      })
+      .then(() => {
+        console.log('资源缓存完成');
+      })
+      .catch(error => {
+        console.error('预缓存失败:', error);
       })
   );
 });
@@ -48,18 +56,20 @@ self.addEventListener('fetch', event => {
           });
       }).catch(() => {
         // 如果都失败了，返回离线页面
-        return caches.match('/offline.html');
+        return caches.match('./offline.html');
       })
   );
 });
 
 self.addEventListener('activate', event => {
+  console.log('Service Worker 已激活');
   const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(
         cacheNames.map(cacheName => {
           if (cacheWhitelist.indexOf(cacheName) === -1) {
+            console.log('删除旧缓存:', cacheName);
             return caches.delete(cacheName);
           }
         })

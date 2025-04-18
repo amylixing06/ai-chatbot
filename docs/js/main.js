@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     // 更新页脚年份
-    document.querySelector('.copyright p').innerHTML = `© ${new Date().getFullYear()} AI助手. 保留所有权利.`;
+    document.querySelector('.copyright p').innerHTML = `© ${new Date().getFullYear()} 先问AI. 版权所有.`;
     
     // 处理轮播图展示
     const dots = document.querySelectorAll('.showcase-dot');
