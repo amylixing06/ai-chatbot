@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI增长图表</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #111827;
+            font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+        }
+        .container {
+            width: 500px;
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            padding: 20px;
+            box-sizing: border-box;
+            color: white;
+        }
+        .dashboard {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #6366f1;
+        }
+        .subtitle {
+            font-size: 14px;
+            color: #9ca3af;
+            margin-top: 5px;
+        }
+        .chart-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .line-chart {
+            position: relative;
+            height: 180px;
+            margin-bottom: 15px;
+        }
+        .chart-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-rows: repeat(4, 1fr);
+        }
+        .grid-line {
+            width: 100%;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .line-path {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            fill: none;
+            stroke: #6366f1;
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .line-path-area {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            fill: url(#gradient);
+            opacity: 0.2;
+        }
+        .point {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #6366f1;
+            transform: translate(-50%, -50%);
+        }
+        .point:nth-child(1) { left: 0%; top: 70%; }
+        .point:nth-child(2) { left: 16.6%; top: 60%; }
+        .point:nth-child(3) { left: 33.3%; top: 45%; }
+        .point:nth-child(4) { left: 50%; top: 35%; }
+        .point:nth-child(5) { left: 66.6%; top: 20%; }
+        .point:nth-child(6) { left: 83.3%; top: 30%; }
+        .point:nth-child(7) { left: 100%; top: 15%; }
+        
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        .stat-item {
+            background-color: #1f2937;
+            border-radius: 6px;
+            padding: 10px 15px;
+            flex: 1;
+            margin-right: 10px;
+            text-align: center;
+        }
+        .stat-item:last-child {
+            margin-right: 0;
+        }
+        .stat-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #6366f1;
+            margin-bottom: 5px;
+        }
+        .stat-label {
+            font-size: 12px;
+            color: #9ca3af;
+        }
+        .months {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+        }
+        .month {
+            font-size: 12px;
+            color: #9ca3af;
+        }
+        .watermark {
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard">
+            <div class="header">
+                <div>
+                    <div class="title">AI分身增长趋势</div>
+                    <div class="subtitle">过去6个月创收能力分析</div>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <div class="line-chart">
+                    <div class="chart-grid">
+                        <div class="grid-line"></div>
+                        <div class="grid-line"></div>
+                        <div class="grid-line"></div>
+                        <div class="grid-line"></div>
+                    </div>
+                    
+                    <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <defs>
+                            <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#6366f1" stop-opacity="0.5" />
+                                <stop offset="100%" stop-color="#6366f1" stop-opacity="0" />
+                            </linearGradient>
+                        </defs>
+                        <path class="line-path" d="M0,70 C5,65 10,60 16.6,60 C25,60 28,45 33.3,45 C40,45 45,35 50,35 C55,35 60,20 66.6,20 C75,20 78,30 83.3,30 C90,30 95,15 100,15" />
+                        <path class="line-path-area" d="M0,70 C5,65 10,60 16.6,60 C25,60 28,45 33.3,45 C40,45 45,35 50,35 C55,35 60,20 66.6,20 C75,20 78,30 83.3,30 C90,30 95,15 100,15 V100 H0 Z" />
+                    </svg>
+                    
+                    <div class="point"></div>
+                    <div class="point"></div>
+                    <div class="point"></div>
+                    <div class="point"></div>
+                    <div class="point"></div>
+                    <div class="point"></div>
+                    <div class="point"></div>
+                </div>
+                
+                <div class="months">
+                    <div class="month">1月</div>
+                    <div class="month">2月</div>
+                    <div class="month">3月</div>
+                    <div class="month">4月</div>
+                    <div class="month">5月</div>
+                    <div class="month">6月</div>
+                    <div class="month">7月</div>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-value">385%</div>
+                        <div class="stat-label">收入增长率</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">¥18,450</div>
+                        <div class="stat-label">平均月收入</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">8.6小时</div>
+                        <div class="stat-label">回本时间</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="watermark">先问AI - 时刻为你赚钱</div>
+    </div>
+    
+    <script>
+    // 截图辅助脚本
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('请对该页面截图，保存为png格式，用作AI增长图表图片');
+    });
+    </script>
+</body>
+</html> 
