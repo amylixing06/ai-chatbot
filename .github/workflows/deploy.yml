@@ -26,8 +26,11 @@ jobs:
         run: |
           # 如果需要构建，在这里添加构建步骤
           
+          # 创建一个简单的修改，确保有内容可提交
+          echo "上次部署时间: $(date)" > deploy_timestamp.txt
+          
           # 将所有文件添加到gh-pages分支
           git checkout -b gh-pages
           git add .
-          git commit -m "直接部署到GitHub Pages"
+          git commit -m "直接部署到GitHub Pages: $(date)"
           git push -f origin gh-pages 
