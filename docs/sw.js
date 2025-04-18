@@ -10,7 +10,7 @@ const urlsToCache = [
   './icons/apple-touch-icon.png',
   './icons/android-chrome-192x192.png',
   './icons/android-chrome-512x512.png',
-  './manifest.json',
+  './site.webmanifest',
   './offline.html'
 ];
 
