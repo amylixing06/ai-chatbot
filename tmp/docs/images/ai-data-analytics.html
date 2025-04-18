@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>先问AI数据分析</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #111827;
+            font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+        }
+        .container {
+            width: 500px;
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            padding: 20px;
+            box-sizing: border-box;
+            color: white;
+        }
+        .dashboard {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #10b981;
+        }
+        .subtitle {
+            font-size: 14px;
+            color: #9ca3af;
+            margin-top: 5px;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .card {
+            background-color: #1f2937;
+            border-radius: 6px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-title {
+            font-size: 14px;
+            color: #d1d5db;
+            margin-bottom: 5px;
+        }
+        .card-value {
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+        }
+        .card-indicator {
+            font-size: 12px;
+            color: #10b981;
+            margin-top: 4px;
+            display: flex;
+            align-items: center;
+        }
+        .card-indicator.up::before {
+            content: '↑';
+            margin-right: 4px;
+        }
+        .chart {
+            flex-grow: 1;
+            position: relative;
+            background-color: #1f2937;
+            border-radius: 6px;
+            padding: 15px;
+            overflow: hidden;
+        }
+        .chart-title {
+            font-size: 14px;
+            color: #d1d5db;
+            margin-bottom: 10px;
+        }
+        .chart-grid {
+            position: absolute;
+            width: 100%;
+            height: 70%;
+            bottom: 15px;
+            left: 15px;
+            right: 15px;
+        }
+        .chart-line {
+            position: absolute;
+            width: calc(100% - 30px);
+            height: 2px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .chart-line:nth-child(1) { bottom: 0; }
+        .chart-line:nth-child(2) { bottom: 33%; }
+        .chart-line:nth-child(3) { bottom: 66%; }
+        .chart-bar {
+            position: absolute;
+            bottom: 0;
+            width: 24px;
+            background-color: #10b981;
+            border-radius: 4px 4px 0 0;
+        }
+        .chart-bar:nth-child(4) { left: 10%; height: 65%; }
+        .chart-bar:nth-child(5) { left: 22%; height: 40%; }
+        .chart-bar:nth-child(6) { left: 34%; height: 75%; }
+        .chart-bar:nth-child(7) { left: 46%; height: 55%; }
+        .chart-bar:nth-child(8) { left: 58%; height: 85%; }
+        .chart-bar:nth-child(9) { left: 70%; height: 70%; }
+        .chart-bar:nth-child(10) { left: 82%; height: 90%; }
+        .watermark {
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard">
+            <div class="header">
+                <div>
+                    <div class="title">先问AI数据分析</div>
+                    <div class="subtitle">实时用户收入与互动数据</div>
+                </div>
+            </div>
+            
+            <div class="cards">
+                <div class="card">
+                    <div class="card-title">总收入</div>
+                    <div class="card-value">¥14,500</div>
+                    <div class="card-indicator up">23.5%</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">活跃AI分身</div>
+                    <div class="card-value">12</div>
+                    <div class="card-indicator up">4</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">用户满意度</div>
+                    <div class="card-value">95%</div>
+                    <div class="card-indicator up">5.2%</div>
+                </div>
+            </div>
+            
+            <div class="chart">
+                <div class="chart-title">月收入趋势 (最近7天)</div>
+                <div class="chart-grid">
+                    <div class="chart-line"></div>
+                    <div class="chart-line"></div>
+                    <div class="chart-line"></div>
+                    <div class="chart-bar"></div>
+                    <div class="chart-bar"></div>
+                    <div class="chart-bar"></div>
+                    <div class="chart-bar"></div>
+                    <div class="chart-bar"></div>
+                    <div class="chart-bar"></div>
+                    <div class="chart-bar"></div>
+                </div>
+            </div>
+        </div>
+        <div class="watermark">先问AI - 让您的知识持续赚钱</div>
+    </div>
+    
+    <script>
+    // 截图辅助脚本
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('请对该页面截图，保存为png格式，用作先问AI数据分析图片');
+    });
+    </script>
+</body>
+</html> 
